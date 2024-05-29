@@ -16,3 +16,7 @@ _polygonPoints(N,n):=block(
 );
 
 polygonPoints(N):=_polygonPoints(N,0);
+
+rotateZ:matrix([cos(%alpha),sin(%alpha),0],[-sin(%alpha),cos(%alpha),0],[0,0,1]);
+
+regularPyramidH:h = sqrt(a^2 - R^2);
