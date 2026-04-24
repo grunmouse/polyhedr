@@ -13,5 +13,7 @@ module tetrahedron(a=1,center=false){
         [0,2,3]
     ];
     doPoly(points, faces, a, center);
+    
 }
     
+tetrahedron();

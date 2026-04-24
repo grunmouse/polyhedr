@@ -1,11 +1,6 @@
-function mod(a,m) = ((a%m)+m)%m;
+use <functions.scad>
 
-function add(v, i = 0, r) = 
-    i < len(v) ? 
-        i == 0 ?
-            add(v, 1, v[0]) :
-            add(v, i + 1, r + v[i]) :
-        r;
+function mod(a,m) = ((a%m)+m)%m;
 
 
 function Rout(n) = (1/(2*sin(180/n)));
@@ -97,11 +92,11 @@ module icosahedron(){
         for(i=[l-1:-1:0]) [mod(i-1,l), i, 2*l+1],
         for(i=[l-1:-1:0]) [l+i, l+ mod(i-1,l), 2*l]
     ];
-        
+    translate(getCenter(true, points))
     polyhedron(points, faces);
 }
 
-module dodecahedron(){
+module dodecahedron(a=1, center=false){
     
     ha = hAntiprism(5);
     hp = hPyramid(5);
@@ -155,8 +150,8 @@ module dodecahedron(){
         ],
         
     ];
-    
-    polyhedron(points, faces);
+    translate(getCenter(center, points))
+    polyhedron(points*a, faces);
 }
 
-dodecahedron();
+dodecahedron(1, false);
